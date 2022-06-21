@@ -1,0 +1,81 @@
+public class Player1 {
+    private int health;
+    private String name;
+
+    public Player1(String name,int health ) {
+        if(health<0 || health>100){
+            this.health = 100;
+        }
+        else {
+            this.health = health;
+        }
+        this.name = name;
+    }
+
+    public Player1() {
+    }
+
+    public void gotDamegeByPistol(){
+        if (health > 0){
+            this.health -= 10;
+            System.out.println(this.name+" Got damage by Pistol, Current health is "+this.health);
+        }
+        else if (health > 0 && health <= 10){
+            this.health = 0;
+            System.out.println(this.name+" Got damage by Pistol, Current health is " + this.health);
+            System.out.println("!! "+ this.name +" dead !! ");
+
+        }
+        else if(health<= 0){
+            this.health = 0;
+            System.out.println(this.name + " is dead. current health is "+ this.health);
+        }
+    }
+
+    public void gotDamegeBySniper(){
+        if (health > 40){
+            this.health -= 50;
+            System.out.println(this.name+" Got damage by Sniper, Current health is "+this.health);
+
+        }
+        else if (health > 0 && health <= 40){
+            this.health = 0;
+            System.out.println(this.name+" Got damage by Sniper, Current health is " + this.health);
+            System.out.println("!! "+ this.name +" dead !! ");
+
+        }
+        else if(health<= 0){
+            this.health = 0;
+            System.out.println(this.name + " is dead. current health is "+ this.health);
+
+        }
+    }
+
+    public void heal(){
+        if (health <= 0){
+            System.out.println("Player is dead. Heal is not possible");
+        }
+        else {
+            this.health = 100;
+            System.out.println("Healing is done. Current health is "+ this.health);
+        }
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+}
