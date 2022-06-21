@@ -1,0 +1,95 @@
+public class Player2 extends Player1 {
+    private String name;
+    private int health;
+    public boolean armor;
+
+    public Player2(String name, int health) {
+        if(health<0 || health>100){
+            this.health = 100;
+        }
+        else {
+            this.health = health;
+        }
+        this.name = name;
+
+    }
+
+    @Override
+    public void gotDamegeByPistol() {
+        if (health > 0){
+            if (armor) {
+                this.health -= 5;
+                System.out.println("Armor is On!! Got damage by Pistol, Current health is " + this.health);
+            }
+            else if (!armor){
+                this.health -= 10;
+                if (health <= 0){
+                    this.health = 0;
+                    System.out.println("Armor is Off!! Got damage by Pistol, Current health is " + this.health);
+                    System.out.println(this.name+" is dead");
+                }
+                System.out.println("Armor is Off!! Got damage by Pistol, Current health is " + this.health);
+            }
+        }
+        else if (health > 0 && health <= 10){
+            this.health = 0;
+            System.out.println("Got damage by Pistol, Current health is " + this.health);
+            System.out.println("!! "+ this.name +" dead !! ");
+
+        }
+        else if(health<= 0){
+            this.health = 0;
+            System.out.println(this.name + " is dead. current health is "+ this.health);
+        }
+    }
+
+
+    public void armorOn(){
+        armor = true;
+    }
+    public void armorOff(){
+        armor = false;
+    }
+
+
+
+    @Override
+    public void gotDamegeBySniper() {
+        if (health > 50){
+            if (armor){
+                this.health -= 40;
+                System.out.println("Armor is On!! Got damage by Sniper, Current health is "+this.health);
+            }
+            else if (!armor){
+                this.health -= 50;
+                System.out.println("Armor is Off!! Got damage by Sniper, Current health is "+this.health);
+            }
+        }
+
+        else if (health > 0 && health <= 50){
+            if (armor){
+                this.health -= 40;
+                if (health <= 0){
+                    this.health = 0;
+                    System.out.println(this.name+" is dead"+" Current health is "+ this.health);
+                }
+                else if (health>0){
+                    System.out.println("Armor is On!! Got damage by Sniper, Current health is "+this.health);
+                }
+            }
+            else if(!armor) {
+                this.health -= 50;
+                if (health <= 0){
+                    this.health = 0;
+                    System.out.println("Armor is Off!! Got damage by Sniper"+this.name+" is dead"+" Current health is "+ this.health);
+                }
+            }
+        }
+        else if(health<= 0){
+            this.health = 0;
+            System.out.println(this.name + " is dead. current health is "+ this.health);
+
+    }
+
+}
+}
